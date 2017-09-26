@@ -1,0 +1,18 @@
+<h1 class="message" [class.hidden]="!isMessageVisible" (transitionend)="onMessageVisibilityChanged($event)">{{message}}</h1>
+<app-grid [can-draw-markers]="canGridDrawMarkers"></app-grid>
+<div class="buttons">
+  <button class="btn btn-primary" (click)="start()" [class.btn-play]="!isGameInProgress" [class.btn-refresh]="isGameInProgress">
+    <div class="btn__icon-wrap btn__icon-wrap-lg">
+      <i class="fa fa-play fa-3x" [class.visible]="!isGameInProgress"></i>
+      <i class="fa fa-refresh fa-3x" [class.visible]="isGameInProgress"></i>
+    </div>
+  </button>
+  <button class="btn btn-primary" (click)="isSettingsMenuActive = true;">
+    <div class="btn__icon-wrap btn__icon-wrap-lg">
+      <i class="fa fa-cog fa-3x visible"></i>
+    </div>
+  </button>
+</div>
+<div class="overlay h-center v-center" [class.active]="isSettingsMenuActive">
+  <app-settings (settings-inactive)="isSettingsMenuActive = false;" [is-active]="isSettingsMenuActive" [class.active]="isSettingsMenuActive"></app-settings>
+</div>

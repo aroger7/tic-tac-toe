@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+}
+
+.btn {
+	transition: transform 0.2s;
+	background-color: transparent;
+	border: none;
+
+	&:hover {
+		transform: scale(1.2);
+	}
+
+	&[disabled] {
+		color: grey;
+	}
+
+	&__icon-wrap {
+		position: relative;
+		width: 2em;
+		height: 2em;
+
+		&-lg {
+			width: 3em;
+			height: 3em;		
+		}
+
+		> * {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			visibility: hidden;
+			opacity: 0;
+			transition: opacity 0.2s, visibility 0.2s;
+		}
+	}
+
+	&-radio {
+		display: none;
+
+		& + label {
+			display: inline-block;
+			transition: border-bottom 0.2s;
+			border-bottom-width: 3px;
+			border-bottom-style: solid;
+			border-bottom-color: transparent;
+
+			margin: 5px;
+			padding: 5px;
+		}
+
+		&:checked + label {
+			border-bottom-width: 3px;
+			border-bottom-style: solid;
+			border-bottom-color: #92C840;
+		}
+	}
+
+	&-primary {
+		color: #6F1716;
+	}
+
+	&-confirm {
+		color: green;
+	}
+
+	&-cancel {
+		color: red;
+	}
+}
+
+.marker {
+	&-cross {
+		stroke: #216F38;
+
+		&__line {
+			animation: draw 0.2s linear forwards;
+			stroke-dasharray: 56.5;
+			stroke-dashoffset: 56.5;
+
+			&:nth-child(2) {
+				//Delay applied to second line of cross only
+				animation-delay: 0.2s;
+			}
+		}
+	}
+
+	&-circle {
+		animation: draw 0.4s linear forwards;
+		stroke: #7FFFA5;
+		stroke-dasharray: 220;
+		stroke-dashoffset: 220;
+	}
+}
+
+.grid {
+	&__line {
+		stroke: #6F1716;
+		stroke-width: 4px;
+		fill: transparent;
+
+		&-winning {
+			stroke: #216F38;
+			stroke-width: 8px;
+
+			&.drawn {
+				animation: draw 0.2s linear forwards;
+			}
+
+			&.circle {
+				stroke: #7FFFA5;
+			}
+		}
+	}
+}
+
+.settings {
+	transition: opacity 0.3s;
+	margin: 2px;
+
+	&-player-type {
+		display: inline-block;
+	}
+
+	&-details {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&-marker {
+		display: inline-block;
+	}
+
+	&-name {
+		display: inline-block;
+		margin: 10px;
+	}
+
+	&__textbox {
+		display: inline;
+		width: 200px;
+		background: transparent;
+		border: 2px solid, #6F1716;
+		border-color: rgba(#000, 1);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		box-shadow: none;
+		transition: border-color 0.2s;
+		text-align: center;
+		margin: 0;
+
+		font: 32px/1.2 'Ubuntu Condensed', sans-serif;
+		color: #404040;
+
+		&[readonly] {
+			border-color: rgba(#000, 0);
+		}
+	}
+}
+
+.message {
+	color: #6F1716;
+	font: 48px/1.2 'Ubuntu Condensed', sans-serif;
+	opacity: 1;
+	transition: opacity 0.2s;
+	&:empty::after {
+		content: ".";
+    	visibility: hidden;
+	}
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	transition: background-color 0.3s, visibility 0.3s;
+
+	* {
+		visibility: hidden;
+	}
+
+	&.active {
+		visibility: visible;
+		background-color: rgba(#000, 0.6);
+		* {
+			visibility: initial;
+		}
+	}
+}
+
+.visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+.v-center {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.h-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.fa-sm {
+	font-size: 0.5em;
+}
+
+@keyframes draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+}

@@ -1,0 +1,5 @@
+<div class="settings" *ngFor="let player of players; let ind=index">
+  <app-player-settings [player]="player" [group-var]="ind"></app-player-settings>
+</div>
+<button class="btn btn-confirm" [disabled]='!canConfirm' (click)="confirm()"><i class="fa fa-check fa-2x"></i></button>
+<button class="btn btn-cancel" (click)="cancel()"><i class="fa fa-times fa-2x"></i></button>

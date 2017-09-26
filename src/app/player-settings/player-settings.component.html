@@ -1,0 +1,47 @@
+<div class="settings settings-name">
+  <input type="text" class="settings__textbox" value="" [(ngModel)]="player.name" [readonly]="!isNameEditable" (click)="isNameEditable = true" (keyup.enter)="confirmNameEdit()" (keyup.escape)="cancelNameEdit()" />
+</div>
+<div class="settings settings-details">
+  <div class="settings settings-player-type">
+    <input class="btn btn-radio" id="human-radio-button-{{groupVar}}" type="radio" name="player-type-{{groupVar}}" [value]="true" [(ngModel)]="player.isHumanPlayer" [checked]="player.isHumanPlayer" />
+    <label for="human-radio-button-{{groupVar}}">
+      <i class="fa fa-user-o fa-2x"></i>
+    </label>
+    <input class="btn btn-radio" id="ai-radio-button-{{groupVar}}" type="radio" name="player-type-{{groupVar}}" [value]="false" [(ngModel)]="player.isHumanPlayer" [checked]="!player.isHumanPlayer" />
+    <label for="ai-radio-button-{{groupVar}}">
+      <i class="fa fa-desktop fa-2x"></i>
+    </label>
+  </div>
+  <div class="settings settings-ai-difficulty" [class.collapsed]="player.isHumanPlayer">
+    <input class="btn btn-radio" id="normal-radio-button-{{groupVar}}" type="radio" name="difficulty-{{groupVar}}" [value]="AiDifficulty.Normal" [(ngModel)]="player.difficulty" [checked]="player.difficulty === AiDifficulty.Normal" [disabled]="player.isHumanPlayer" />
+    <label for="normal-radio-button-{{groupVar}}">
+      <i class="fa fa-star fa-sm"></i>
+    </label>
+    <input class="btn btn-radio" id="hard-radio-button-{{groupVar}}" type="radio" name="difficulty-{{groupVar}}" [value]="AiDifficulty.Hard" [(ngModel)]="player.difficulty" [checked]="player.difficulty === AiDifficulty.Hard" [disabled]="player.isHumanPlayer" />
+    <label for="hard-radio-button-{{groupVar}}">
+      <i class="fa fa-star fa-sm"></i>
+      <i class="fa fa-star fa-sm"></i>
+    </label>
+    <input class="btn btn-radio" id="impossible-radio-button-{{groupVar}}" type="radio" name="difficulty-{{groupVar}}" [value]="AiDifficulty.Impossible" [(ngModel)]="player.difficulty" [checked]="player.difficulty === AiDifficulty.Impossible" [disabled]="player.isHumanPlayer" />
+    <label for="impossible-radio-button-{{groupVar}}">
+      <i class="fa fa-star fa-sm"></i>
+      <i class="fa fa-star fa-sm"></i>
+      <i class="fa fa-star fa-sm"></i>
+    </label>
+  </div>
+  <div class="settings settings-marker">
+    <input class="btn btn-radio" id="circle-radio-button-{{groupVar}}" type="radio" name="marker-{{groupVar}}" [value]="Marker.Circle" [(ngModel)]="player.marker" [checked]="player.marker === Marker.Circle" />
+    <label for="circle-radio-button-{{groupVar}}">
+      <svg width="35" height="35" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="30" fill="transparent" stroke="black" stroke-width="4" stroke="#404040" />
+      </svg>
+    </label>
+    <input class="btn btn-radio" id="cross-radio-button-{{groupVar}}" type="radio" name="marker-{{groupVar}}" [value]="Marker.Cross" [(ngModel)]="player.marker" [checked]="player.marker === Marker.Cross" />
+    <label for="cross-radio-button-{{groupVar}}">
+      <svg width="35" height="35" viewBox="0 0 100 100">
+        <line x1="30" y1="30" x2="70" y2="70" fill="transparent" stroke="black" stroke-width="4" stroke="#404040" />
+        <line x1="70" y1="30" x2="30" y2="70" fill="transparent" stroke="black" stroke-width="4" stroke="#404040" />
+      </svg>
+    </label>
+  </div>
+</div>
