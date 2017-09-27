@@ -194,14 +194,14 @@ body {
 	background-color: transparent;
 	transition: background-color 0.3s, visibility 0.3s;
 
-	* {
+	> * {
 		visibility: hidden;
 	}
 
 	&.active {
 		visibility: visible;
 		background-color: rgba(#000, 0.6);
-		* {
+		> * {
 			visibility: initial;
 		}
 	}
