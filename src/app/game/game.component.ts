@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
 	public isSettingsMenuActive: boolean = false;
 	public isMessageVisible: boolean = true;
 	public canGridDrawMarkers: boolean = false;
-	public message: string = '';
+	public message: string = 'Let\'s play a game!';
 	public nextMessage: string = '';
 	private _gameStream: Subscription;
 	private _lastActivePlayer: Player;
